@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimization Techniques</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="container">
+  <div class="content">
+    <h1 id="calc-heading">Optimization Techniques (UMA035)</h1>
+    <p id="calc-para">
+      The syllabus of Optimization Techniques (UMA035) is available 
+      <a href="https://drive.google.com/file/d/1cU5alFXQAOsbjYZbk9mGjFStRayZS_tT/view" target="_blank">
+        here.
+      </a>
+    </p>
+
+    <h3>Unit-II</h3>
+    <ul class="tutorial-list">
+      <li><a href="https://drive.google.com/file/d/1b4JTcp5JkOH7MyxeuDDapUvmVgPOo3Q_/view" target="_blank">Dual Simplex Method</a></li>
+      <li><a href="https://drive.google.com/file/d/1p-U83qbT4wLisl_dQEsqVx0aY-mL2d_P/view" target="_blank">Sensitivity Analysis</a></li>
+    </ul>
+
+    <h3>Unit-III</h3>
+    <ul class="tutorial-list">
+      <li><a href="https://drive.google.com/file/d/1vP368LKh1szAxfaqP6hI2LLjNC5MXr4g/view" target="_blank">Integer Programming(BnB)</a></li>
+    </ul>
+
+    <h3>Unit-IV</h3>
+    <ul class="tutorial-list">
+      <li><a href="https://drive.google.com/file/d/1QG0kmBZ9kJlN0VpCnBu5Wp7iYs_8dMZG/view" target="_blank">Transportation Problem (V-1)</a></li>
+      <li><a href="https://drive.google.com/file/d/1sBzN9ne3Ko_A2BdwwdMOvVMXlSAAkrrM/view" target="_blank">Assignment Problem (V-1)</a></li>
+    </ul>
+
+    <h3>Unit-V</h3>
+    <ul class="tutorial-list">
+      <li><a href="https://drive.google.com/file/d/1Itiqs9rCm3nfGlezY-VEWXN3kPRl92sx/view" target="_blank">Network Construction</a></li>
+      <li><a href="https://drive.google.com/file/d/1ETqlzfNwuyEpJ8xT9hgxB66blUl7_Ufd/view" target="_blank">Critical Path Method</a></li>
+      <li><a href="https://drive.google.com/file/d/1eIBvZu3cz-x0GNJ_RwqTYHckCnAR8gJc/view" target="_blank">Floats</a></li>
+      <li><a href="https://drive.google.com/file/d/1Cw0OpxFaoW9hXgpyyS0HcFyRAO9XiK3P/view" target="_blank">Crashing</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="announcements.js"></script>
+
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
+
+    // Desktop hover links (optional)
+    document.querySelectorAll(".dropdown > a").forEach(link=>{
+      // you can remove this if using CSS hover
+    });
+
+    // Mobile dropdown setup
+    function setupMobileDropdowns() {
+      if (window.innerWidth <= 768) { // only for mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(dropdown => {
+          const link = dropdown.querySelector('a');
+
+          // Remove previous listeners to avoid duplicates
+          link.replaceWith(link.cloneNode(true));
+        });
+
+        const newDropdowns = document.querySelectorAll('.dropdown');
+
+        newDropdowns.forEach(dropdown => {
+          const link = dropdown.querySelector('a');
+
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // prevent immediate close
+            dropdown.classList.toggle('open'); // toggle dropdown
+          });
+        });
+
+        // Close dropdown if clicking outside
+        document.addEventListener('click', function() {
+          newDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+          });
+        });
+      }
+    }
+
+    setupMobileDropdowns();
+
+    window.addEventListener('resize', setupMobileDropdowns);
+  })
+  .catch(err => console.error('Error loading navbar:', err));
+</script>
+
+<script>
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(err => console.error('Error loading footer:', err));
+</script>
+
+</body>
+</html>
