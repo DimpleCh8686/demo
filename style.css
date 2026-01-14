@@ -920,8 +920,10 @@ footer .footer-container a:hover::after {
 
   .content {
     min-height: 0; 
+    overflow: auto;
   }
 }
+
 
 
 
