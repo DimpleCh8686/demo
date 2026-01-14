@@ -911,21 +911,19 @@ footer .footer-container a:hover::after {
 
 /* For safari browser */
 @supports (-webkit-touch-callout: none) {
+
+  .info-sections {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   #about,
   #updated-news {
+    flex: 0 0 48% !important;
+    max-width: 48% !important;
     min-width: 0 !important;
+    min-height: auto !important;
     box-sizing: border-box !important;
-    overflow-wrap: break-word;
-    word-break: break-word;
   }
 
-  .info-sections > * {
-    overflow: hidden;
-  }
-
-  .container,
-  .content {
-    min-width: 0 !important;
-  }
 }
-
