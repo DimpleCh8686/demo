@@ -879,21 +879,24 @@ footer .footer-container a:hover::after {
 
   .dropdown.courses-dropdown .dropdown-content li a {
     padding: 8px 12px;
-    font-size: 0.9rem;
+    font-size: 10px;
   }
 
   /* NOTES */
 
   .dropdown.notes-dropdown .dropdown-content {
+    position: fixed;
     right: 0;
     left: auto;
-    padding: 4px 0;
+    /* padding: 4px 0; */
     text-align: center;
+    box-sizing: border-box;
+    border-radius: 18px;
   }
 
   .dropdown.notes-dropdown .dropdown-content li a {
-    padding: 5px 10px;
-    font-size: 0.85rem;
+    padding: 2px 4px;
+    font-size: 10px;
   }
 
   .dropdown .dropdown-content li a:hover {
@@ -901,6 +904,7 @@ footer .footer-container a:hover::after {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
+
 
 
 
