@@ -910,61 +910,40 @@ footer .footer-container a:hover::after {
 }
 
 /* For safari browser */
+/* ===============================
+   SAFARI FLEX OVERFLOW FIX
+=============================== */
 @supports (-webkit-touch-callout: none) {
 
-  /* 1) Neutralise Safari's faulty layout calc that causes a phantom top-gap */
-  html, body {
-    height: auto !important;
-  }
-
-  /* keep the body flow (do not force full-viewport flex for Safari) */
-  body {
-    min-height: auto !important;
-    display: block !important;
-  }
-
-  /* 2) Make the layout containers normal flow so Safari won't insert offset */
-  .container {
-    display: block !important;
-  }
-
-  /* 3) Keep nav sticky but ensure it does not create phantom offset */
-  nav {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 9999 !important;
-    /* force a new compositing layer to stabilise Safari rendering */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  /* 4) Reset any margin/padding on the first content block */
-  .content,
-  .content > *:first-child,
-  #calc-heading:first-child {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  /* 5) Preserve interior flex behavior that you used for columns */
+  /* Parent flex container */
   .info-sections {
-    display: flex !important;
-    flex-wrap: wrap !important;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
-  .info-sections > * {
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-
+  /* CRITICAL: allow flex children to shrink */
   #about,
   #updated-news {
-    flex: 1 1 0 !important;
-    min-width: 0 !important;
+    flex: 1 1 0;
+    min-width: 0;          /* 🔥 THE FIX */
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  /* 6) Make sure no unexpected large min-heights remain */
-  .container, .content {
-    min-height: 0 !important;
+  /* Handle long text / email / links */
+  #about h3,
+  #about a,
+  #updated-news li {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Prevent Safari phantom spacing */
+  .container,
+  .content {
+    min-width: 0;
   }
 }
