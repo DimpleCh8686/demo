@@ -861,12 +861,15 @@ footer .footer-container a:hover::after {
   .dropdown.courses-dropdown .dropdown-content {
     /* left: 0;
     min-width: 200px; */
-    right: 0;
-    left: auto;
-    width: 80vw;
-    max-width: 80vw;
-    min-width: unset;        
+    position: fixed;
+    top: 48px;                 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 90vw;
+    min-width: unset;
     box-sizing: border-box;
+    border-radius: 18px;
   }
 
   .dropdown.courses-dropdown .dropdown-content {
@@ -898,6 +901,7 @@ footer .footer-container a:hover::after {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
+
 
 
 
