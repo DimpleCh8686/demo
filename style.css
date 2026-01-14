@@ -916,8 +916,18 @@ footer .footer-container a:hover::after {
   }
 
   body {
-    min-height: auto;     /* Safari fix */
-    display: block;      /* CRITICAL: disables broken flex in Safari */
+    min-height: 100%;
+  }
+
+  /* Fix Safari pushing first heading down */
+  .content > h1:first-child,
+  .content > #calc-heading:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .content {
+    padding-top: 10px;
   }
 
   ul {
@@ -925,18 +935,9 @@ footer .footer-container a:hover::after {
     padding-left: 0;
   }
 
+  /* Safari flex height correction */
   .container,
   .content {
     min-height: 0;
-    flex: none;
   }
 }
-
-
-
-
-
-
-
-
-
