@@ -909,6 +909,7 @@ footer .footer-container a:hover::after {
   }
 }
 
+/* For safari browser */
 @supports (-webkit-touch-callout: none) {
 
   html, body {
@@ -919,25 +920,28 @@ footer .footer-container a:hover::after {
     min-height: 100%;
   }
 
-  /* Fix Safari pushing first heading down */
-  .content > h1:first-child,
-  .content > #calc-heading:first-child {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  .content {
-    padding-top: 10px;
-  }
-
   ul {
     list-style: none;
     padding-left: 0;
   }
 
-  /* Safari flex height correction */
   .container,
   .content {
     min-height: 0;
+  }
+
+  .info-sections {
+    flex-wrap: wrap;
+  }
+
+  .info-sections > * {
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  #about,
+  #updated-news {
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
