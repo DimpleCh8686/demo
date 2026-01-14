@@ -266,6 +266,7 @@ nav {
   padding: 6px 12px;
   font-size: 0.85rem;
   white-space: nowrap;
+  text-align: left;
 }
 
 /* Show dropdown on hover or open */
@@ -921,6 +922,7 @@ footer .footer-container a:hover::after {
     min-height: 0; 
   }
 }
+
 
 
 
