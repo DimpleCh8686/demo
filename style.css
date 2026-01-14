@@ -878,8 +878,8 @@ footer .footer-container a:hover::after {
 
 
   .dropdown.courses-dropdown .dropdown-content li a {
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: 10px 4px;
+    font-size: 0.9rem;
   }
 
   /* NOTES */
@@ -903,4 +903,5 @@ footer .footer-container a:hover::after {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
+
 
