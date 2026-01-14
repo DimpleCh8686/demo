@@ -157,7 +157,7 @@ nav {
   color: #1f2f46;
   text-align: center;
   padding: 8px 10px;
-  font-size: 14px;
+  font-size: 1 rem;
   font-weight: bold;
   text-decoration: none;
   border-radius: 10px;
@@ -908,6 +908,19 @@ footer .footer-container a:hover::after {
   }
 }
 
+@supports (-webkit-touch-callout: none) {
+  body {
+    height: 100vh; 
+  }
+
+  .container {
+    min-height: 0; 
+  }
+
+  .content {
+    min-height: 0; 
+  }
+}
 
 
 
