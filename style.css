@@ -910,20 +910,35 @@ footer .footer-container a:hover::after {
 }
 
 /* For safari browser */
+/* ===============================
+   SAFARI FLEX WIDTH LOCK (FINAL)
+=============================== */
 @supports (-webkit-touch-callout: none) {
 
   .info-sections {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    gap: 24px;
+    box-sizing: border-box;
   }
 
+  /* HARD LOCK equal width */
   #about,
   #updated-news {
-    flex: 0 0 48% !important;
-    max-width: 48% !important;
-    min-width: 0 !important;
-    min-height: auto !important;
-    box-sizing: border-box !important;
+    flex: 0 0 calc(50% - 12px);  /* 🔒 Safari needs this */
+    max-width: calc(50% - 12px);
+    min-width: 0;
+    box-sizing: border-box;
   }
 
+  /* Text safety */
+  #about *,
+  #updated-news * {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }
+
