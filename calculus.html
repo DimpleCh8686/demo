@@ -74,42 +74,49 @@ fetch('navbar.html')
       // you can remove this if using CSS hover
     });
 
-    // Mobile dropdown setup
     function setupMobileDropdowns() {
-      if (window.innerWidth <= 768) { // only for mobile
-        const dropdowns = document.querySelectorAll('.dropdown');
+  if (window.innerWidth <= 768) {
+    const dropdowns = document.querySelectorAll('.dropdown');
 
-        dropdowns.forEach(dropdown => {
-          const link = dropdown.querySelector('a');
+    dropdowns.forEach(dropdown => {
+      const link = dropdown.querySelector('a');
 
-          // Remove previous listeners to avoid duplicates
-          link.replaceWith(link.cloneNode(true));
+      // Remove previous listeners
+      link.replaceWith(link.cloneNode(true));
+    });
+
+    const newDropdowns = document.querySelectorAll('.dropdown');
+
+    newDropdowns.forEach(dropdown => {
+      const link = dropdown.querySelector('a');
+
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Close other dropdowns
+        newDropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove('open');
+          }
         });
 
-        const newDropdowns = document.querySelectorAll('.dropdown');
+        // Toggle the clicked dropdown
+        dropdown.classList.toggle('open');
+      });
+    });
 
-        newDropdowns.forEach(dropdown => {
-          const link = dropdown.querySelector('a');
+    // Close all dropdowns if clicking outside
+    document.addEventListener('click', function() {
+      newDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('open');
+      });
+    });
+  }
+}
 
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation(); // prevent immediate close
-            dropdown.classList.toggle('open'); // toggle dropdown
-          });
-        });
-
-        // Close dropdown if clicking outside
-        document.addEventListener('click', function() {
-          newDropdowns.forEach(dropdown => {
-            dropdown.classList.remove('open');
-          });
-        });
-      }
-    }
-
-    setupMobileDropdowns();
-
-    window.addEventListener('resize', setupMobileDropdowns);
+setupMobileDropdowns();
+window.addEventListener('resize', setupMobileDropdowns);
   })
   .catch(err => console.error('Error loading navbar:', err));
 </script>
