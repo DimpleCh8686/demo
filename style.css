@@ -80,6 +80,7 @@ h1 {
   box-sizing: border-box;     
   display: flex;
   flex-direction: column;
+  min-width: 0;   
 }
 
 #about {
@@ -324,6 +325,7 @@ nav {
   height: auto;
   overflow: hidden;
   position: relative;
+  min-height: 0; 
 }
 
 #news-list {
@@ -337,6 +339,7 @@ nav {
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #d4b200 #FEED95; 
+  min-height: 0; 
 }
 
 /* Chrome, Edge, Safari */
@@ -908,30 +911,3 @@ footer .footer-container a:hover::after {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
-
-/* For safari browser */
-@supports (-webkit-touch-callout: none) {
-
-  .info-sections {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: stretch !important;
-    gap: 80px !important;
-  }
-
-  #about,
-  #updated-news {
-    flex: 0 0 calc(50% - 40px) !important;
-    width: calc(50% - 40px) !important;
-    max-width: calc(50% - 40px) !important;
-    min-width: 0 !important;
-    height: auto !important;
-  }
-
-}
-
-
-
-
-
