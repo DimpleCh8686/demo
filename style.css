@@ -914,34 +914,35 @@ footer .footer-container a:hover::after {
 
 
 /* ================= SAFARI ONLY – FINAL FIX ================= */
-/* ================= SAFARI FINAL FIX ================= */
 @supports (-webkit-touch-callout: none) {
 
-  /* Safari flex gap bug fix */
+  /* Replace flex with grid ONLY in Safari */
   .info-sections {
-    gap: 0 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+    width: 100%;
+    max-width: 100%;
   }
 
-  /* Create spacing using padding instead */
-  #about {
-    margin-right: 40px;
-  }
-
-  #updated-news {
-    margin-left: 40px;
-  }
-
-  /* Ensure nothing can overflow */
-  .info-sections,
+  /* Prevent flex growth */
   #about,
   #updated-news {
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
     box-sizing: border-box;
   }
 
-  html, body {
+  /* Ensure container never overflows */
+  .container,
+  .content,
+  body,
+  html {
     overflow-x: hidden;
   }
 }
+
+
 
 
