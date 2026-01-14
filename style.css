@@ -220,10 +220,10 @@ nav {
 .dropdown.courses-dropdown .dropdown-content li a {
   display: block;
   padding: 8px 16px;        
-  font-size: 0.9rem;
-  text-align: left;         
+  font-size: 0.9rem;         
   box-sizing: border-box;   
-  white-space: nowrap;      
+  white-space: nowrap;    
+  text-align: left;
 }
 
 /* Show dropdown on hover or open (mobile) */
@@ -921,6 +921,7 @@ footer .footer-container a:hover::after {
     min-height: 0; 
   }
 }
+
 
 
 
