@@ -916,21 +916,22 @@ footer .footer-container a:hover::after {
 @supports (-webkit-touch-callout: none) {
 
   .info-sections {
-    align-items: flex-start !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 80px !important;
   }
 
   #about,
   #updated-news {
-    min-height: auto !important;
+    flex: 1 1 50% !important;
+    max-width: 50% !important;
+    width: auto !important;
+    min-width: 0 !important;
     height: auto !important;
-
-    width: auto !important;     
-    max-width: 100% !important;
-
-    flex: 1 1 0 !important;
-    min-width: 0 !important;     
   }
 
 }
+
 
 
