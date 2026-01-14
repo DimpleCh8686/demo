@@ -914,24 +914,34 @@ footer .footer-container a:hover::after {
 
 
 /* ================= SAFARI ONLY – FINAL FIX ================= */
+/* ================= SAFARI FINAL FIX ================= */
 @supports (-webkit-touch-callout: none) {
 
-  /* Prevent Safari 100vw overflow bug */
-  html, body {
-    overflow-x: hidden;
-  }
-
-  /* Ensure flex container never exceeds viewport */
+  /* Safari flex gap bug fix */
   .info-sections {
-    max-width: 100%;
-    box-sizing: border-box;
+    gap: 0 !important;
   }
 
-  /* Cards must respect container width */
+  /* Create spacing using padding instead */
+  #about {
+    margin-right: 40px;
+  }
+
+  #updated-news {
+    margin-left: 40px;
+  }
+
+  /* Ensure nothing can overflow */
+  .info-sections,
   #about,
   #updated-news {
     max-width: 100%;
     box-sizing: border-box;
   }
+
+  html, body {
+    overflow-x: hidden;
+  }
 }
+
 
