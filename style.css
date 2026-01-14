@@ -912,36 +912,31 @@ footer .footer-container a:hover::after {
   }
 }
 
-
-/* ================= SAFARI ONLY – FINAL FIX ================= */
 @supports (-webkit-touch-callout: none) {
-
-  /* Replace flex with grid ONLY in Safari */
-  .info-sections {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 40px;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* Prevent flex growth */
-  #about,
-  #updated-news {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-  /* Ensure container never overflows */
-  .container,
-  .content,
-  body,
-  html {
-    overflow-x: hidden;
-  }
+    /* Ensure flex container is row and not wrapping, disable gap */
+    .container {
+        flex-wrap: nowrap !important;
+        gap: 0 !important; /* override any flexgap (Safari lacks full support) */
+    }
+    /* Let flex items shrink/split and use auto height instead of 100% */
+    .container > * {
+        min-width: 0 !important;
+        min-height: 0 !important;
+        flex: 1 1 auto !important;
+        height: auto !important; /* override any height:100% on children */
+    }
+    /* Left “Contact” box: fixed/intrinsic width, no flex-grow */
+    .contact-box {
+        flex: 0 0 auto !important;
+    }
+    /* Right “Announcements” box: fill remaining space and scroll */
+    .announcements-box {
+        flex: 1 1 auto !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    }
 }
+
 
 
 
