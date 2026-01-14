@@ -869,6 +869,11 @@ footer .footer-container a:hover::after {
     box-sizing: border-box;
   }
 
+  .dropdown.courses-dropdown .dropdown-content {
+    transform: translateX(0);
+  }
+
+
   .dropdown.courses-dropdown .dropdown-content li a {
     padding: 8px 12px;
     font-size: 0.9rem;
@@ -893,5 +898,6 @@ footer .footer-container a:hover::after {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
+
 
 
