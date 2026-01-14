@@ -910,40 +910,22 @@ footer .footer-container a:hover::after {
 }
 
 /* For safari browser */
-/* ===============================
-   SAFARI FLEX OVERFLOW FIX
-=============================== */
 @supports (-webkit-touch-callout: none) {
-
-  /* Parent flex container */
-  .info-sections {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* CRITICAL: allow flex children to shrink */
   #about,
   #updated-news {
-    flex: 1 1 0;
-    min-width: 0;          /* 🔥 THE FIX */
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Handle long text / email / links */
-  #about h3,
-  #about a,
-  #updated-news li {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
     overflow-wrap: break-word;
     word-break: break-word;
   }
 
-  /* Prevent Safari phantom spacing */
+  .info-sections > * {
+    overflow: hidden;
+  }
+
   .container,
   .content {
-    min-width: 0;
+    min-width: 0 !important;
   }
 }
+
