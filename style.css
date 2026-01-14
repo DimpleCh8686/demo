@@ -911,3 +911,43 @@ footer .footer-container a:hover::after {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 }
+
+
+/* ================= SAFARI ONLY – FINAL FIX ================= */
+@supports (-webkit-touch-callout: none) {
+
+  /* Flex parents must allow shrinking */
+  .container,
+  .content,
+  .info-sections {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Both cards must be flexible columns */
+  #about,
+  #updated-news {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Announcements body */
+  .news-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* Scroll area */
+  #news-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
