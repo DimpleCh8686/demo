@@ -879,24 +879,23 @@ footer .footer-container a:hover::after {
 
   .dropdown.courses-dropdown .dropdown-content li a {
     padding: 8px 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   /* NOTES */
 
   .dropdown.notes-dropdown .dropdown-content {
-    position: fixed;
     right: 0;
     left: auto;
-    /* padding: 4px 0; */
-    text-align: center;
+    padding: 4px 0; 
+    text-align: left;
     box-sizing: border-box;
     border-radius: 18px;
   }
 
   .dropdown.notes-dropdown .dropdown-content li a {
-    padding: 2px 4px;
-    font-size: 10px;
+    padding: 4px 10px;
+    font-size: 12px;
   }
 
   .dropdown .dropdown-content li a:hover {
