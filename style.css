@@ -912,32 +912,38 @@ footer .footer-container a:hover::after {
   }
 }
 
+/* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
-    /* Ensure flex container is row and not wrapping, disable gap */
-    .container {
-        flex-wrap: nowrap !important;
-        gap: 0 !important; /* override any flexgap (Safari lacks full support) */
-    }
-    /* Let flex items shrink/split and use auto height instead of 100% */
-    .container > * {
-        min-width: 0 !important;
-        min-height: 0 !important;
-        flex: 1 1 auto !important;
-        height: auto !important; /* override any height:100% on children */
-    }
-    /* Left “Contact” box: fixed/intrinsic width, no flex-grow */
-    .contact-box {
-        flex: 0 0 auto !important;
-    }
-    /* Right “Announcements” box: fill remaining space and scroll */
-    .announcements-box {
-        flex: 1 1 auto !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-    }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+  }
+
+  .container,
+  .content {
+    min-height: 0;
+  }
+
+  .info-sections {
+    display: flex;
+  }
+
+  .info-sections > * {
+    min-width: 0;
+  }
+
+  #about,
+  #updated-news {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .news-header {
+    min-width: 0;
+  }
 }
-
-
-
-
-
