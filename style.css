@@ -1035,7 +1035,7 @@ footer .footer-container a:hover::after {
     flex: 1 1 0% !important;
     min-width: 0 !important;
     max-width: none !important;
-    width: 90px !important;
+    width: auto !important;
     box-sizing: border-box !important;
   }
   
@@ -1106,4 +1106,5 @@ footer .footer-container a:hover::after {
     }
   }
 }
+
 
