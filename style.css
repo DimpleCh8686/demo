@@ -916,19 +916,23 @@ footer .footer-container a:hover::after {
 @supports (-webkit-touch-callout: none) {
 
   .info-sections {
-    width: 100%;
+    display: flex;
+    align-items: flex-start;   
+    gap: 40px;
     max-width: 100%;
     overflow-x: hidden;
   }
 
   #about,
   #updated-news {
-    flex: 1 1 50%;
-    max-width: 50%;
-    min-width: 0;
+    flex: 0 0 auto;            
+    width: fit-content;        
+    max-width: calc(50% - 20px); 
+    box-sizing: border-box;
 
-    /* CRITICAL FIX */
     overflow-wrap: anywhere;
     word-break: break-word;
   }
 }
+
+
