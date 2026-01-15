@@ -1035,7 +1035,14 @@ footer .footer-container a:hover::after {
     flex: 1 1 0% !important;
     min-width: 0 !important;
     max-width: none !important;
-    width: auto !important;
+    width: 90px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix padding issue in news list */
+  #news-list li {
+    padding: 6px 10px 6px 6px !important;
+    box-sizing: border-box !important;
   }
   
   /* Ensure proper text wrapping in announcements */
@@ -1053,7 +1060,8 @@ footer .footer-container a:hover::after {
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
     word-break: break-word !important;
-    white-space: normal !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
     box-sizing: border-box !important;
   }
   
@@ -1075,6 +1083,12 @@ footer .footer-container a:hover::after {
     z-index: 10;
     pointer-events: auto;
     display: inline;
+    word-break: break-word;
+  }
+  
+  /* Ensure scrollbar doesn't cause overflow */
+  #news-list {
+    padding-right: 5px !important;
   }
   
   /* For mobile Safari */
@@ -1092,3 +1106,4 @@ footer .footer-container a:hover::after {
     }
   }
 }
+
