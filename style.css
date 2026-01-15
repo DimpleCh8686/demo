@@ -913,26 +913,36 @@ footer .footer-container a:hover::after {
 }
 
 /* SAFARI ONLY FIXES */
+/* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
 
   .info-sections {
     display: flex;
-    align-items: flex-start;   
-    gap: 40px;
+    flex-direction: row;
+    align-items: stretch;   
+    gap: 80px;
     max-width: 100%;
-    overflow-x: hidden;
   }
 
   #about,
   #updated-news {
-    flex: 0 0 auto;            
-    width: fit-content;        
-    max-width: calc(50% - 20px); 
+    flex: 1;            
+    min-width: 0;
+    max-width: none;
     box-sizing: border-box;
-
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  }
+  
+  /* For mobile Safari */
+  @media (max-width: 1200px) {
+    .info-sections {
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    #about,
+    #updated-news {
+      width: 100%;
+      max-width: 100%;
+    }
   }
 }
-
-
