@@ -1018,7 +1018,6 @@ footer .footer-container a:hover::after {
 
 
 
-
 /* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
 
@@ -1027,55 +1026,56 @@ footer .footer-container a:hover::after {
     display: flex !important;
     flex-direction: row !important;
     align-items: stretch !important;
-    justify-content: space-between !important;
     gap: 80px !important;
     width: 100% !important;
   }
 
   #about,
   #updated-news {
-    flex: 1 1 calc(50% - 40px) !important;
-    min-width: calc(50% - 40px) !important;
-    max-width: calc(50% - 40px) !important;
-    width: calc(50% - 40px) !important;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    width: auto !important;
   }
   
-  /* Prevent text overflow in announcements */
-  #updated-news {
-    overflow: hidden !important;
-  }
-  
+  /* Ensure proper text wrapping in announcements */
+  #updated-news,
   #updated-news h2,
   #updated-news .news-container,
   #news-list,
   #news-list li,
-  .news-text {
+  .news-item,
+  .news-text,
+  .news-header,
+  .news-date,
+  .news-time {
     max-width: 100% !important;
     overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
     word-break: break-word !important;
-    overflow: hidden !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
   }
   
   /* Ensure text wrapping in contact */
+  #about,
+  #about h2,
   #about h3 {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-break: break-word;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    box-sizing: border-box !important;
   }
   
   /* Fix clickable links in announcements */
-  #news-list,
-  #news-list li,
-  .news-item,
-  .news-text,
+  #news-list a,
   .news-text a {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     pointer-events: auto;
+    display: inline;
   }
-  
-  /* DON'T override body/container - let the main CSS handle it */
-  /* This prevents footer spacing issues */
   
   /* For mobile Safari */
   @media (max-width: 1200px) {
@@ -1087,7 +1087,6 @@ footer .footer-container a:hover::after {
     #about,
     #updated-news {
       width: 100% !important;
-      min-width: 100% !important;
       max-width: 100% !important;
       flex: 1 1 auto !important;
     }
