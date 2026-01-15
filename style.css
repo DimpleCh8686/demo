@@ -915,15 +915,19 @@ footer .footer-container a:hover::after {
 /* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
 
-  html, body {
-    height: 100%;
+  html {
+    height: auto;
   }
 
   body {
-    min-height: 100%;
+    height: auto;
+    overflow-y: auto;
   }
 
-  .container,
+  .container {
+    min-height: 100vh;
+  }
+
   .content {
     min-height: 0;
   }
@@ -943,7 +947,8 @@ footer .footer-container a:hover::after {
     max-width: 100%;
   }
 
-  .news-header {
-    min-width: 0;
+  nav {
+    -webkit-transform: translateZ(0);
   }
 }
+
