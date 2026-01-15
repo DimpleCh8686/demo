@@ -947,9 +947,8 @@ footer .footer-container a:hover::after {
 
 
 /* SAFARI ONLY FIXES */
-@supports (-webkit-touch-callout: none) {
+/* @supports (-webkit-touch-callout: none) {
 
-  /* Fix flexbox equal width distribution */
   .info-sections {
     display: flex;
     flex-direction: row;
@@ -967,7 +966,6 @@ footer .footer-container a:hover::after {
     flex-basis: 0 !important;
   }
   
-  /* Ensure text wrapping */
   #about h3,
   #updated-news h2,
   #updated-news .news-container {
@@ -976,7 +974,6 @@ footer .footer-container a:hover::after {
     word-break: break-word;
   }
   
-  /* Fix clickable links in announcements */
   #news-list,
   #news-list li,
   .news-item,
@@ -987,7 +984,6 @@ footer .footer-container a:hover::after {
     pointer-events: auto;
   }
   
-  /* Ensure footer is visible */
   body {
     min-height: 100vh;
     display: flex;
@@ -1004,7 +1000,6 @@ footer .footer-container a:hover::after {
     margin-top: 30px;
   }
   
-  /* For mobile Safari */
   @media (max-width: 1200px) {
     .info-sections {
       flex-direction: column;
@@ -1014,6 +1009,85 @@ footer .footer-container a:hover::after {
     #about,
     #updated-news {
       width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 auto !important;
+    }
+  }
+}
+ */
+
+
+
+
+/* SAFARI ONLY FIXES */
+@supports (-webkit-touch-callout: none) {
+
+  /* Fix flexbox equal width distribution with proper gap */
+  .info-sections {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 80px !important;
+    width: 100% !important;
+  }
+
+  #about,
+  #updated-news {
+    flex: 1 1 calc(50% - 40px) !important;
+    min-width: calc(50% - 40px) !important;
+    max-width: calc(50% - 40px) !important;
+    width: calc(50% - 40px) !important;
+  }
+  
+  /* Prevent text overflow in announcements */
+  #updated-news {
+    overflow: hidden !important;
+  }
+  
+  #updated-news h2,
+  #updated-news .news-container,
+  #news-list,
+  #news-list li,
+  .news-text {
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    overflow: hidden !important;
+  }
+  
+  /* Ensure text wrapping in contact */
+  #about h3 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  
+  /* Fix clickable links in announcements */
+  #news-list,
+  #news-list li,
+  .news-item,
+  .news-text,
+  .news-text a {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+  }
+  
+  /* DON'T override body/container - let the main CSS handle it */
+  /* This prevents footer spacing issues */
+  
+  /* For mobile Safari */
+  @media (max-width: 1200px) {
+    .info-sections {
+      flex-direction: column !important;
+      gap: 40px !important;
+    }
+    
+    #about,
+    #updated-news {
+      width: 100% !important;
+      min-width: 100% !important;
       max-width: 100% !important;
       flex: 1 1 auto !important;
     }
