@@ -913,7 +913,7 @@ footer .footer-container a:hover::after {
 }
 
 /* SAFARI ONLY FIXES */
-@supports (-webkit-touch-callout: none) {
+/* @supports (-webkit-touch-callout: none) {
 
   #about,
   #updated-news {
@@ -932,8 +932,85 @@ footer .footer-container a:hover::after {
     word-break: break-word;
   }
   
+  @media (max-width: 1200px) {
+    #about,
+    #updated-news {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 auto !important;
+    }
+  }
+} */
+
+
+
+
+
+/* SAFARI ONLY FIXES */
+@supports (-webkit-touch-callout: none) {
+
+  /* Fix flexbox equal width distribution */
+  .info-sections {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;   
+    gap: 80px !important;
+    max-width: 100%;
+  }
+
+  #about,
+  #updated-news {
+    flex: 1 1 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex-basis: 0 !important;
+  }
+  
+  /* Ensure text wrapping */
+  #about h3,
+  #updated-news h2,
+  #updated-news .news-container {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  
+  /* Fix clickable links in announcements */
+  #news-list,
+  #news-list li,
+  .news-item,
+  .news-text,
+  .news-text a {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+  }
+  
+  /* Ensure footer is visible */
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    flex: 1;
+    display: flex;
+  }
+  
+  footer {
+    flex-shrink: 0;
+    margin-top: 30px;
+  }
+  
   /* For mobile Safari */
   @media (max-width: 1200px) {
+    .info-sections {
+      flex-direction: column;
+      gap: 40px !important;
+    }
+    
     #about,
     #updated-news {
       width: 100% !important;
