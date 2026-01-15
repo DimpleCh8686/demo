@@ -913,36 +913,32 @@ footer .footer-container a:hover::after {
 }
 
 /* SAFARI ONLY FIXES */
-/* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
-
-  .info-sections {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;   
-    gap: 80px;
-    max-width: 100%;
-  }
 
   #about,
   #updated-news {
-    flex: 1;            
-    min-width: 0;
-    max-width: none;
-    box-sizing: border-box;
+    flex: 1 1 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex-basis: 0 !important;
+  }
+  
+  #about h3,
+  #updated-news h2,
+  #updated-news .news-container {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   
   /* For mobile Safari */
   @media (max-width: 1200px) {
-    .info-sections {
-      flex-direction: column;
-      gap: 40px;
-    }
-    
     #about,
     #updated-news {
-      width: 100%;
-      max-width: 100%;
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 auto !important;
     }
   }
 }
