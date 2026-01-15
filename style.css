@@ -66,14 +66,13 @@ h1 {
 .info-sections {
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 80px;
   align-items: stretch;
 }
 
 #about,
 #updated-news {
-  /* flex: 1; */
-  flex: 1 1 0%;
+  flex: 1;
   /* height: 220px; */
   padding: 20px;
   border-radius: 20px;
@@ -81,8 +80,7 @@ h1 {
   box-sizing: border-box;     
   display: flex;
   flex-direction: column;
-  min-width: 0;   
-  max-width: 100%;
+  min-width: 0; 
 }
 
 #about {
@@ -917,46 +915,20 @@ footer .footer-container a:hover::after {
 /* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
 
-  html {
-    height: auto;
-  }
-
-  body {
-    height: auto;
-    overflow-y: auto;
-  }
-
-  .container {
-    min-height: 100vh;
-  }
-
-  .content {
-    min-height: 0;
-  }
-
-  /* .info-sections {
-    display: flex;
-  } */
   .info-sections {
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
-  }
-
-  .info-sections > * {
-    min-width: 0;
+    overflow-x: hidden;
   }
 
   #about,
   #updated-news {
-    flex: 1 1 0%;
+    flex: 1 1 50%;
+    max-width: 50%;
     min-width: 0;
-    max-width: 100%;
-  }
 
-  nav {
-    -webkit-transform: translateZ(0);
+    /* CRITICAL FIX */
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
-
-
