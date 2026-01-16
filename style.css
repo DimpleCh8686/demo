@@ -11,6 +11,7 @@ body {
 
 .container {
   display: flex;
+  /* min-height: auto; */
   flex: 1;
 }
 
@@ -34,6 +35,7 @@ body {
   flex: 1;
   padding: 40px;
   box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
 }
@@ -72,6 +74,7 @@ h1 {
 #about,
 #updated-news {
   flex: 1;
+  /* height: 220px; */
   padding: 20px;
   border-radius: 20px;
   min-height: auto;
@@ -121,6 +124,7 @@ h1 {
 }
 
 /* FORCE DESKTOP NAVBAR ON ALL SCREENS */
+
 nav {
   position: sticky;
   top: 0;
@@ -137,12 +141,14 @@ nav {
   margin: 0;
   padding: 6px 20px;
   background-color: #FEED95;
+
   display: flex;
   justify-content: flex-end;
   flex-wrap: nowrap;
   align-items: center;
   overflow: visible;
 }
+
 
 .menu li {
   position: relative;
@@ -197,6 +203,7 @@ nav {
   position: absolute;
   top: 110%;
   left: 0;                  
+  transform: none;
   background-color: #FEED95;
   min-width: 260px;          
   max-width: 90vw;
@@ -209,6 +216,11 @@ nav {
 }
 
 /* Dropdown items */
+.dropdown.courses-dropdown .dropdown-content li {
+  margin: 0;
+  padding: 0;              
+}
+
 .dropdown.courses-dropdown .dropdown-content li a {
   display: block;
   padding: 8px 16px;        
@@ -218,13 +230,13 @@ nav {
   white-space: nowrap;      
 }
 
-/* Show dropdown */
+/* Show dropdown on hover or open (mobile) */
 .dropdown.courses-dropdown:hover .dropdown-content,
 .dropdown.courses-dropdown.open .dropdown-content {
   display: block;
 }
 
-/* NOTES DROPDOWN */
+/* NOTES & IDEAS DROPDOWN */
 .dropdown.notes-dropdown {
   position: relative;
   text-align: left; 
@@ -235,38 +247,79 @@ nav {
   position: absolute;
   top: 110%;
   right: 0;
+  left: auto;
+  transform: none;
+
   background-color: #FEED95;
   width: max-content;
   max-width: 90vw;
+
   z-index: 3000;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   padding: 4px 0;
+  text-align: left;
+
   list-style: none;      
   margin: 0;
 }
 
+/* Dropdown items */
 .dropdown.notes-dropdown .dropdown-content li a {
   display: block;
   padding: 6px 12px;
   font-size: 0.85rem;
   white-space: nowrap;
+  text-align: left;
 }
 
-/* Arrows */
-.dropdown.notes-dropdown .arrow,
+/* Show dropdown on hover or open */
+.dropdown.notes-dropdown:hover .dropdown-content,
+.dropdown.notes-dropdown.open .dropdown-content {
+  display: block;
+}
+
+/* Arrow styling */
+.dropdown.notes-dropdown .arrow {
+  margin-left: 5px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate arrow on hover or when open */
+.dropdown.notes-dropdown:hover .arrow,
+.dropdown.notes-dropdown.open .arrow {
+  transform: rotate(90deg);
+}
+
+
+/* Default arrow (pointing right) */
+.dropdown.notes-dropdown .arrow {
+  margin-left: 5px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  display: inline-block; 
+  transform: rotate(0deg); 
+}
+
+/* Arrow points down when open */
+.dropdown.notes-dropdown.open .arrow,
+.dropdown.notes-dropdown:hover .arrow {
+  transform: rotate(90deg); 
+}
+
+/* Default arrow (pointing right) */
 .dropdown.courses-dropdown .arrow {
   margin-left: 5px;
   font-size: 12px;
-  display: inline-block; 
+  display: inline-block;   
   transition: transform 0.3s ease;
   transform: rotate(0deg); 
 }
 
-.dropdown.notes-dropdown:hover .arrow,
-.dropdown.notes-dropdown.open .arrow,
-.dropdown.courses-dropdown:hover .arrow,
-.dropdown.courses-dropdown.open .arrow {
+/* Rotate arrow when dropdown is open */
+.dropdown.courses-dropdown.open .arrow,
+.dropdown.courses-dropdown:hover .arrow {
   transform: rotate(90deg); 
 }
 
@@ -288,6 +341,12 @@ nav {
   max-height: 180px; 
   overflow-y: auto;    
   overflow-x: hidden;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #d4b200 #FEED95; 
 }
@@ -299,34 +358,103 @@ nav {
 
 #news-list::-webkit-scrollbar-track {
   background: #FEED95;  
+  border-radius: 10px;
 }
 
 #news-list::-webkit-scrollbar-thumb {
   background-color: #d4b200; 
   border-radius: 10px;
+  border: 2px solid #FEED95; 
+}
+
+#news-list::-webkit-scrollbar-thumb:hover {
+  background-color: #b89a00; 
 }
 
 #news-list li {
+  display: block;
   padding: 6px 20px 6px 6px;
   font-size: 1rem; 
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   white-space: normal;
+  box-sizing: border-box;
+}
+
+.news-item {
+  display: block;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+  color: #1f2f46;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .news-text {
   margin-top: 5px;
   line-height: 1.5;
+  word-wrap: break-word;
   overflow-wrap: break-word;
+  white-space: normal;
+  min-width: 0;
 }
 
-/* ANIMATIONS */
+.news-date {
+  font-weight: bold;
+}
+
+.news-time {
+  font-style: italic;
+}
+
+.new-badge img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  animation: blink 1s infinite; 
+}
+
+.new-badge img {
+  width: 25px;    
+  height: auto;
+  vertical-align: middle;
+}
+
+
+.news-text a img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+  animation: blink 1s infinite;
+}
+
+/* Clickable older text */
+.news-text a {
+  color: #1f2f46;
+  text-decoration: none;
+}
+
+.news-text a:hover {
+  text-decoration: underline;
+}
+
 @keyframes blink {
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
-}
-
-@keyframes scroll-text {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
 }
 
 /* CONSTRUCTION BANNER */
@@ -335,6 +463,7 @@ nav {
   background-color: #1f2f46;
   overflow: hidden;
   white-space: nowrap;
+  box-sizing: border-box;
   border-radius: 4px;
 }
 
@@ -347,30 +476,541 @@ nav {
   animation: scroll-text 15s linear infinite;
 }
 
+@keyframes scroll-text {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* COURSE / CALCULUS PAGE (same for all courses) */
+#calc-heading {
+  font-size: 2.625rem;
+  text-align: center;
+  color: #1f2f46;
+  margin: 0 0 28px 0;
+  position: relative;
+}
+
+#calc-heading::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 3px;
+  background-color: #1f2f46;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+#calc-para,
+#calc-para1 {
+  font-size: 1.0625rem; 
+  line-height: 1.8;
+  color: #1f2f46;
+  margin-bottom: 20px;
+}
+
+#calc-para a,
+#calc-para1 a {
+  font-weight: bold;
+  color: #1f2f46;
+  text-decoration: none;
+  border-bottom: 2px solid #FEED95;
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+#calc-para a:hover,
+#calc-para1 a:hover {
+  border-bottom-color: #1f2f46;
+}
+
+#calc-heading ~ h2 {
+  margin-top: 36px;
+  margin-bottom: 12px;
+  font-size: 1.625rem; 
+  color: #1f2f46;
+  padding-left: 14px;
+  position: relative;
+}
+
+#calc-heading ~ h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 65%;
+  background-color: #1f2f46;
+  border-radius: 2px;
+}
+
+#calc-heading ~ h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: #FEED95;
+  margin-top: 6px;
+}
+
+#calc-heading ~ ul {
+  padding-left: 22px;
+}
+
+.tutorial-list li {
+  margin-bottom: 10px;
+  font-size: 1.0625rem; 
+}
+
+.tutorial-list a {
+  font-weight: bold;
+  color: #1f2f46;
+  text-decoration: none;
+}
+
+/* COURSE SUB-HEADINGS (h3) */
+#calc-heading ~ h3 {
+  position: relative;
+  max-width: 900px;
+  margin: 12px 0;
+  padding-left: 20px;
+  font-size: 1.25rem; 
+  font-weight: bold;
+  color: #1f2f46;
+}
+
+#calc-heading ~ h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 4px;
+  height: 70%;
+  background-color: #1f2f46;
+  border-radius: 2px;
+}
+
+#calc-heading ~ h3::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background-color: #FEED95;
+  margin-top: 6px;
+}
+
 /* FOOTER */
 footer {
   background-color: #1f2f46;
   color: white;
   text-align: center;
   padding: 22px 0;
-  margin-top: auto;
+  margin-top: 30px;
 }
+
+footer::before {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 0 auto 18px;
+}
+
+footer .footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+footer .footer-container a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  position: relative;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+footer .footer-container a:hover {
+  color: #FEED95;
+  transform: translateY(-4px);
+}
+
+footer .footer-container a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #FEED95;
+  transition: all 0.3s ease;
+}
+
+footer .footer-container a:hover::after {
+  width: 70%;
+  left: 15%;
+}
+
+
+
+/* RESPONSIVE LAYOUT */
+
+@media (max-width: 1200px) {
+  .sidebar { width: 200px; }
+
+  .info-sections {
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #about {
+    margin: 4px 0;
+    padding-bottom: 20px;
+    text-align: start;
+    min-width: 0;
+  }
+
+  #updated-news h2 { margin-top: 0; }
+
+  #about, #updated-news { 
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .container { flex-direction: column; }
+
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .content { padding: 20px; }
+
+  .info-sections { gap: 30px; }
+
+  #about h3 { margin: 4px 0; }
+
+  #about, #updated-news {
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+    height: fit-content;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  #name { font-size: 2rem; }
+  #calc-heading { font-size: 2rem; }
+  #calc-heading ~ h2 { font-size: 1.375rem; }
+  #calc-para,
+  #calc-para1,
+  .tutorial-list li { font-size: 1rem; }
+
+  .news-container,
+  #news-list { max-height: 120px; }
+}
+
+@media (max-width: 600px) {
+  .content { padding: 10px; }
+
+  h1 { font-size: 2.5rem; }
+  #name { font-size: 1.5rem; }
+  #calc-heading { font-size: 1.75rem; }
+  #calc-heading ~ h2 { font-size: 1.25rem; }
+
+  #calc-para,
+  #calc-para1,
+  .tutorial-list li { font-size: 0.9375rem; }
+
+  footer .footer-container {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  footer .footer-container a { font-size: 1.375rem; }
+
+  .construction-banner p { font-size: 10px; }
+}
+
+@media (max-width: 480px) {
+  .sidebar { padding: 5px; }
+
+  .sidebar a { font-size: 0.875rem; }
+
+  .menu li a {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .news-item,
+  .new-badge { font-size: 0.875rem; }
+
+  .new-badge::before { font-size: 18px; }
+}
+
+/* TOUCH DEVICES */
+
+@media (hover: none) and (pointer: coarse) {
+  .menu li a,
+  .sidebar a,
+  .tutorial-list a {
+    padding: 15px;
+    min-height: 44px;
+  }
+
+  .dropdown:hover .dropdown-content { display: none; }
+}
+
+/* ANIMATIONS */
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.new-badge {
+  animation: blink 1s infinite;
+}
+
+@keyframes scroll-text {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+.construction-banner p {
+  animation: scroll-text 15s linear infinite;
+}
+
+/* MOBILE NAVBAR */
+
+@media (max-width: 768px) {
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    height: 48px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0px;
+    height: 100%;
+    padding: 0 5px;
+    overflow: visible;
+  }
+
+  .menu li {
+    position: relative;
+    margin: 0;
+  }
+
+  .menu li a {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 8px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    border-radius: 10px;
+    color: #1f2f46;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
+  }
+
+  .menu li a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #1f2f46;
+    transition: all 0.3s ease;
+  }
+
+  .menu li a:hover::after {
+    width: 70%;
+    left: 15%;
+  }
+
+  /* DROPDOWNS (shared) */
+
+  .dropdown .arrow {
+    margin-left: 5px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.open .arrow,
+  .dropdown:hover .arrow {
+    transform: rotate(90deg);
+  }
+
+  .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    max-width: 90vw;
+    background: #FEED95;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    z-index: 3000;
+    list-style: none;
+    padding: 0;
+  }
+
+  .dropdown.open .dropdown-content,
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* COURSES */
+
+  .dropdown.courses-dropdown > a { padding-right: 20px; }
+
+  .dropdown.courses-dropdown .dropdown-content {
+    /* left: 0;
+    min-width: 200px; */
+    position: fixed;
+    top: 48px;                 
+    left: 5vw;
+    /* transform: translateX(-25%); */
+    width: 90vw;
+    max-width: 90vw;
+    min-width: unset;
+    box-sizing: border-box;
+    border-radius: 18px;
+  }
+
+  .dropdown.courses-dropdown .dropdown-content {
+    transform: translateX(0);
+  }
+
+
+  .dropdown.courses-dropdown .dropdown-content li a {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* NOTES */
+
+  .dropdown.notes-dropdown .dropdown-content {
+    right: 0;
+    left: auto;
+    padding: 4px 0; 
+    text-align: left;
+    box-sizing: border-box;
+    border-radius: 18px;
+  }
+
+  .dropdown.notes-dropdown .dropdown-content li a {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .dropdown .dropdown-content li a:hover {
+    background: rgba(31,47,70,0.12);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+}
+
 
 /* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
+
   html, body {
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
   }
 
   body {
+    min-height: 100vh;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
   }
 
+  .container {
+    display: flex;
+    flex-direction: row; /* Keeps sidebar and content side-by-side */
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .content {
-    min-width: 0;
+    flex: 1;
+    min-width: 0; /* Critical for Safari text wrapping */
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-sections {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    align-items: stretch; /* Forces both boxes to have the same height */
+    box-sizing: border-box;
+  }
+
+  /* Target both About and News boxes */
+  #about,
+  #updated-news {
+    flex: 1 1 0%; /* Forces equal width distribution */
+    min-width: 0; /* Allows text to wrap instead of overflowing */
+    height: auto; /* Removes the 300px limit that was cutting text */
+    max-height: none; /* Fixes the cutoff issue */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Fix for Announcement text wrapping */
+  .news-text {
+    width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    display: block;
+  }
+
+  #news-list li {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    margin-top: auto;
   }
 }
