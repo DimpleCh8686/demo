@@ -958,66 +958,56 @@ footer .footer-container a:hover::after {
 
   .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Keeps sidebar and content side-by-side */
     flex: 1;
     min-height: 0;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
   }
 
   .content {
     flex: 1;
-    min-height: 0;
-    min-width: 0;
+    min-width: 0; /* Critical for Safari text wrapping */
     width: 100%;
     box-sizing: border-box;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
   }
 
   .info-sections {
+    display: -webkit-flex;
     display: flex;
     width: 100%;
-    min-width: 0;
+    gap: 20px;
+    align-items: stretch; /* Forces both boxes to have the same height */
     box-sizing: border-box;
-    align-items: flex-start;
   }
 
-  .info-sections > * {
-    min-width: 0;
-    flex-basis: 0;
-    box-sizing: border-box;
-    max-height: 300px;
-  }
-
+  /* Target both About and News boxes */
   #about,
   #updated-news {
-    flex: 1;
-    min-width: 0;
-    max-width: 100%;
-    max-height: 300px;
+    flex: 1 1 0%; /* Forces equal width distribution */
+    min-width: 0; /* Allows text to wrap instead of overflowing */
+    height: auto; /* Removes the 300px limit that was cutting text */
+    max-height: none; /* Fixes the cutoff issue */
     box-sizing: border-box;
-    width: auto;
+    display: flex;
+    flex-direction: column;
   }
 
-  .news-header {
-    min-width: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-
+  /* Fix for Announcement text wrapping */
   .news-text {
-    min-width: 0;
-    word-wrap: break-word;
+    width: 100%;
+    white-space: normal;
+    word-break: break-word;
     overflow-wrap: break-word;
+    display: block;
   }
 
   #news-list li {
-    min-width: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
   }
 
   footer {
