@@ -13,7 +13,6 @@ body {
   display: flex;
   /* min-height: auto; */
   flex: 1;
-  /* min-height: 0; */
 }
 
 .sidebar {
@@ -39,7 +38,6 @@ body {
 
   display: flex;
   flex-direction: column;
-  /* min-height: 0; */
 }
 
 /* HEADINGS */
@@ -66,8 +64,11 @@ h1 {
 .info-sections {
   display: flex;
   flex-direction: row;
-  gap: 80px;
+  gap: 40px;
   align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 #about,
@@ -77,10 +78,11 @@ h1 {
   padding: 20px;
   border-radius: 20px;
   min-height: 185px;  
-  box-sizing: border-box;     
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-width: 0; 
+  min-width: 0;
+  overflow: hidden;
 }
 
 #about {
@@ -158,7 +160,7 @@ nav {
   color: #1f2f46;
   text-align: center;
   padding: 8px 10px;
-  font-size: 1 rem;
+  font-size: 1rem;
   font-weight: bold;
   text-decoration: none;
   border-radius: 10px;
@@ -221,10 +223,10 @@ nav {
 .dropdown.courses-dropdown .dropdown-content li a {
   display: block;
   padding: 8px 16px;        
-  font-size: 0.9rem;         
+  font-size: 0.9rem;
+  text-align: left;         
   box-sizing: border-box;   
-  white-space: nowrap;    
-  text-align: left;
+  white-space: nowrap;      
 }
 
 /* Show dropdown on hover or open (mobile) */
@@ -255,7 +257,7 @@ nav {
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   padding: 4px 0;
-  text-align: center;
+  text-align: left;
 
   list-style: none;      
   margin: 0;
@@ -325,7 +327,10 @@ nav {
   height: auto;
   overflow: hidden;
   position: relative;
-  min-height: 0; 
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 #news-list {
@@ -335,11 +340,14 @@ nav {
   max-height: 180px; 
   overflow-y: auto;    
   overflow-x: hidden;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: #d4b200 #FEED95; 
-  min-height: 0; 
 }
 
 /* Chrome, Edge, Safari */
@@ -367,11 +375,17 @@ nav {
   padding: 6px 20px 6px 6px;
   font-size: 1rem; 
   text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  box-sizing: border-box;
 }
 
 .news-item {
   display: block;
   margin-bottom: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .news-header {
@@ -381,13 +395,17 @@ nav {
   margin-bottom: 2px;
   flex-wrap: wrap;
   color: #1f2f46;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .news-text {
   margin-top: 5px;
   line-height: 1.5;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   white-space: normal;
+  min-width: 0;
 }
 
 .news-date {
@@ -644,17 +662,23 @@ footer .footer-container a:hover::after {
     flex-direction: column;
     gap: 40px;
     width: 100%;
+    box-sizing: border-box;
   }
 
   #about {
     margin: 4px 0;
     padding-bottom: 20px;
     text-align: start;
+    min-width: 0;
   }
 
   #updated-news h2 { margin-top: 0; }
 
-  #about, #updated-news { width: 100%; }
+  #about, #updated-news { 
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
@@ -912,199 +936,87 @@ footer .footer-container a:hover::after {
   }
 }
 
-/* SAFARI ONLY FIXES */
-/* @supports (-webkit-touch-callout: none) {
-
-  #about,
-  #updated-news {
-    flex: 1 1 0 !important;
-    width: 0 !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    flex-basis: 0 !important;
-  }
-  
-  #about h3,
-  #updated-news h2,
-  #updated-news .news-container {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  
-  @media (max-width: 1200px) {
-    #about,
-    #updated-news {
-      width: 100% !important;
-      max-width: 100% !important;
-      flex: 1 1 auto !important;
-    }
-  }
-} */
-
-
-
-
-
-/* SAFARI ONLY FIXES */
-/* @supports (-webkit-touch-callout: none) {
-
-  .info-sections {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;   
-    gap: 80px !important;
-    max-width: 100%;
-  }
-
-  #about,
-  #updated-news {
-    flex: 1 1 0 !important;
-    width: 0 !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    flex-basis: 0 !important;
-  }
-  
-  #about h3,
-  #updated-news h2,
-  #updated-news .news-container {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  
-  #news-list,
-  #news-list li,
-  .news-item,
-  .news-text,
-  .news-text a {
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
-  }
-  
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .container {
-    flex: 1;
-    display: flex;
-  }
-  
-  footer {
-    flex-shrink: 0;
-    margin-top: 30px;
-  }
-  
-  @media (max-width: 1200px) {
-    .info-sections {
-      flex-direction: column;
-      gap: 40px !important;
-    }
-    
-    #about,
-    #updated-news {
-      width: 100% !important;
-      max-width: 100% !important;
-      flex: 1 1 auto !important;
-    }
-  }
-}
- */
-
-
 
 /* SAFARI ONLY FIXES */
 @supports (-webkit-touch-callout: none) {
 
-  /* Fix flexbox equal width distribution with proper gap */
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .content {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
   .info-sections {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important;
-    gap: 80px !important;
-    width: 100% !important;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .info-sections > * {
+    min-width: 0;
+    flex-basis: 0;
+    box-sizing: border-box;
   }
 
   #about,
   #updated-news {
-    flex: 1 1 0% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    width: auto !important;
-    box-sizing: border-box !important;
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    width: auto;
   }
-  
-  /* Fix padding issue in news list */
+
+  .news-header {
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .news-text {
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
   #news-list li {
-    padding: 6px 10px 6px 6px !important;
-    box-sizing: border-box !important;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
-  
-  /* Ensure proper text wrapping in announcements */
-  #updated-news,
-  #updated-news h2,
-  #updated-news .news-container,
-  #news-list,
-  #news-list li,
-  .news-item,
-  .news-text,
-  .news-header,
-  .news-date,
-  .news-time {
-    max-width: 100% !important;
-    overflow-wrap: break-word !important;
-    word-wrap: break-word !important;
-    word-break: break-word !important;
-    hyphens: auto !important;
-    -webkit-hyphens: auto !important;
-    box-sizing: border-box !important;
-  }
-  
-  /* Ensure text wrapping in contact */
-  #about,
-  #about h2,
-  #about h3 {
-    max-width: 100% !important;
-    overflow-wrap: break-word !important;
-    word-wrap: break-word !important;
-    word-break: break-word !important;
-    box-sizing: border-box !important;
-  }
-  
-  /* Fix clickable links in announcements */
-  #news-list a,
-  .news-text a {
-    position: relative;
-    z-index: 10;
-    pointer-events: auto;
-    display: inline;
-    word-break: break-word;
-  }
-  
-  /* Ensure scrollbar doesn't cause overflow */
-  #news-list {
-    padding-right: 5px !important;
-  }
-  
-  /* For mobile Safari */
-  @media (max-width: 1200px) {
-    .info-sections {
-      flex-direction: column !important;
-      gap: 40px !important;
-    }
-    
-    #about,
-    #updated-news {
-      width: 100% !important;
-      max-width: 100% !important;
-      flex: 1 1 auto !important;
-    }
+
+  footer {
+    margin-top: auto;
   }
 }
-
-
