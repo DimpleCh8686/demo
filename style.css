@@ -1,24 +1,7 @@
-/* =========================
-   GLOBAL RESET
-========================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* =========================
-   GLOBAL
-========================= */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-}
-
+/* GLOBAL */
 body {
   font-family: 'Times New Roman', Times, serif;
+  margin: 0;
   background-color: #F5F5DC;
   font-size: 16px;
   min-height: 100vh;
@@ -26,25 +9,18 @@ body {
   flex-direction: column;
 }
 
-/* =========================
-   MAIN LAYOUT
-========================= */
 .container {
   display: flex;
   flex: 1;
-  width: 100%;
-  min-width: 0;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+/* SIDEBAR */
 .sidebar {
   width: 220px;
   background: #003366;
   padding: 20px;
   color: white;
-  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .sidebar a {
@@ -55,30 +31,26 @@ body {
   font-size: 1rem;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 .content {
   flex: 1;
   padding: 40px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-width: 0;
 }
 
-/* =========================
-   HEADINGS
-========================= */
+/* HEADINGS */
 h1 {
   font-size: 5rem;
   text-align: center;
   color: #1f2f46;
-  margin: 0;
+  margin-top: 0;
 }
 
 .content h1 {
-  margin-top: 10px;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 #name {
@@ -88,15 +60,13 @@ h1 {
   color: #1f2f46;
 }
 
-/* =========================
-   INFO SECTIONS
-========================= */
+/* INFO SECTIONS */
 .info-sections {
   display: flex;
   gap: 80px;
-  width: 100%;
-  min-width: 0;
   align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #about,
@@ -104,6 +74,8 @@ h1 {
   flex: 1;
   padding: 20px;
   border-radius: 20px;
+  max-height: 300px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -144,9 +116,119 @@ h1 {
   margin-left: 80px;
 }
 
-/* =========================
-   ANNOUNCEMENTS
-========================= */
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background-color: #FEED95;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  overflow: visible;
+}
+
+/* MENU */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu li a {
+  display: block;
+  color: #1f2f46;
+  padding: 8px 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.menu li a:hover {
+  background-color: rgba(31,47,70,0.12);
+  transform: translateY(-1px);
+}
+
+/* UNDERLINE */
+.menu li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  background-color: #1f2f46;
+  transition: all 0.3s ease;
+}
+
+.menu li a:hover::after {
+  width: 70%;
+  left: 15%;
+}
+
+/* DROPDOWNS */
+.dropdown {
+  position: relative;
+}
+
+.dropdown .arrow {
+  margin-left: 5px;
+  font-size: 12px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .arrow,
+.dropdown.open .arrow {
+  transform: rotate(90deg);
+}
+
+/* COURSES */
+.dropdown.courses-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #FEED95;
+  min-width: 260px;
+  max-width: 90vw;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown.courses-dropdown:hover .dropdown-content,
+.dropdown.courses-dropdown.open .dropdown-content {
+  display: block;
+}
+
+/* NOTES */
+.dropdown.notes-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #FEED95;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  list-style: none;
+}
+
+.dropdown.notes-dropdown:hover .dropdown-content,
+.dropdown.notes-dropdown.open .dropdown-content {
+  display: block;
+}
+
+/* ANNOUNCEMENTS */
 .news-container {
   flex: 1;
   display: flex;
@@ -156,99 +238,33 @@ h1 {
 
 #news-list {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   max-height: 180px;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 100%;
 }
 
 #news-list li {
   padding: 6px 20px 6px 6px;
-  font-size: 1rem;
-  word-break: break-word;
+  word-wrap: break-word;
   white-space: normal;
-}
-
-.news-item {
-  margin-bottom: 10px;
 }
 
 .news-header {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   font-weight: bold;
+  flex-wrap: wrap;
 }
 
 .news-text {
   margin-top: 5px;
   line-height: 1.5;
   word-break: break-word;
-  white-space: normal;
-  width: 100%;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 2000;
-  background-color: #FEED95;
-}
-
-.menu {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  list-style: none;
-  padding: 6px 20px;
-  margin: 0;
-}
-
-.menu li {
-  position: relative;
-}
-
-.menu li a {
-  display: block;
-  padding: 8px 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #1f2f46;
-  text-decoration: none;
-  white-space: nowrap;
-  border-radius: 10px;
-}
-
-/* =========================
-   DROPDOWNS
-========================= */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #FEED95;
-  border-radius: 12px;
-  z-index: 3000;
-  list-style: none;
-  padding: 0;
-}
-
-.dropdown:hover .dropdown-content,
-.dropdown.open .dropdown-content {
-  display: block;
-}
-
-/* =========================
-   ANIMATIONS
-========================= */
+/* ANIMATIONS */
 @keyframes blink {
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
@@ -259,20 +275,16 @@ nav {
   to { transform: translateX(-100%); }
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 footer {
   background-color: #1f2f46;
   color: white;
   text-align: center;
   padding: 22px 0;
-  margin-top: auto;
+  margin-top: 30px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 @media (max-width: 1200px) {
   .info-sections {
     flex-direction: column;
@@ -300,15 +312,8 @@ footer {
   #news-list { max-height: 120px; }
 }
 
-@media (max-width: 600px) {
-  .content { padding: 10px; }
-}
-
-/* =========================
-   SAFARI ONLY FIXES
-========================= */
+/* SAFARI FIX */
 @supports (-webkit-touch-callout: none) {
-
   .container,
   .content,
   .info-sections,
@@ -320,12 +325,7 @@ footer {
 
   #about,
   #updated-news {
-    height: auto;
     max-height: none;
-  }
-
-  .news-text {
-    width: 100%;
-    word-break: break-word;
+    height: auto;
   }
 }
