@@ -64,7 +64,7 @@ h1 {
 .info-sections {
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 80px;
   align-items: flex-start;
   width: 100%;
   box-sizing: border-box;
@@ -73,7 +73,7 @@ h1 {
 
 #about,
 #updated-news {
-  flex: 1 1 auto;
+  flex: 1;
   /* height: 220px; */
   padding: 20px;
   border-radius: 20px;
@@ -84,8 +84,9 @@ h1 {
   flex-direction: column;
   min-width: 0;
   overflow: hidden;
-  min-height: fit-content;
-  height: fit-content;
+}
+
+#about {
   background-color: #1f2f46;
   color: white;
   width:auto;
@@ -327,7 +328,7 @@ nav {
   height: auto;
   overflow: hidden;
   position: relative;
-  flex: 0 1 auto;
+  flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -340,7 +341,7 @@ nav {
   max-height: 180px; 
   overflow-y: auto;    
   overflow-x: hidden;
-  flex: 0 1 auto;
+  flex: 1;
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
@@ -986,9 +987,9 @@ footer .footer-container a:hover::after {
 
   .info-sections > * {
     min-width: 0;
-    flex-basis: auto;
+    flex-basis: 0;
     box-sizing: border-box;
-    height: fit-content;
+    max-height: 300px;
   }
 
   #about,
@@ -996,7 +997,7 @@ footer .footer-container a:hover::after {
     flex: 1;
     min-width: 0;
     max-width: 100%;
-    height: fit-content;
+    max-height: 300px;
     box-sizing: border-box;
     width: auto;
   }
