@@ -1,20 +1,29 @@
-/* GLOBAL */
+/* ================= GLOBAL ================= */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 body {
   font-family: 'Times New Roman', Times, serif;
-  margin: 0;
   background-color: #F5F5DC;
   font-size: 16px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .container {
   display: flex;
   flex: 1;
+  width: 100%;
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
+
 .sidebar {
   width: 220px;
   background: #003366;
@@ -24,49 +33,46 @@ body {
 }
 
 .sidebar a {
-  color: white;
   display: block;
   margin: 10px 0;
+  color: white;
   text-decoration: none;
   font-size: 1rem;
 }
 
-/* CONTENT */
+/* ================= CONTENT ================= */
+
 .content {
   flex: 1;
   padding: 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
-/* HEADINGS */
+/* ================= HEADINGS ================= */
+
 h1 {
   font-size: 5rem;
   text-align: center;
   color: #1f2f46;
-  margin-top: 0;
-}
-
-.content h1 {
-  margin-bottom: 5px;
-  margin-top: 10px;
+  margin: 0;
 }
 
 #name {
   font-size: 2.375rem;
-  margin: 0 0 50px;
+  margin: 10px 0 50px;
   text-align: center;
   color: #1f2f46;
 }
 
-/* INFO SECTIONS */
+/* ================= INFO SECTIONS ================= */
+
 .info-sections {
   display: flex;
   gap: 80px;
-  align-items: flex-start;
   width: 100%;
-  box-sizing: border-box;
 }
 
 #about,
@@ -74,59 +80,32 @@ h1 {
   flex: 1;
   padding: 20px;
   border-radius: 20px;
-  max-height: 300px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  overflow: hidden;
 }
 
 #about {
-  background-color: #1f2f46;
+  background: #1f2f46;
   color: white;
 }
 
 #updated-news {
-  background-color: #FEED95;
+  background: #FEED95;
   color: #1f2f46;
 }
 
-#about h2,
-#updated-news h2 {
-  margin: 5px 0;
-}
+/* ================= NAVBAR ================= */
 
-#about h3 {
-  margin: 6px 0;
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-#about a {
-  color: white;
-  text-decoration: none;
-}
-
-#about a:hover {
-  text-decoration: underline;
-}
-
-.indent {
-  margin-left: 80px;
-}
-
-/* NAVBAR */
 nav {
   position: sticky;
   top: 0;
   z-index: 2000;
-  background-color: #FEED95;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-  overflow: visible;
+  background: #FEED95;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
 }
 
-/* MENU */
 .menu {
   list-style: none;
   margin: 0;
@@ -140,50 +119,29 @@ nav {
   position: relative;
 }
 
-.menu li a {
+.menu a {
   display: block;
-  color: #1f2f46;
   padding: 8px 10px;
   font-size: 1rem;
   font-weight: bold;
+  color: #1f2f46;
   text-decoration: none;
   border-radius: 10px;
   white-space: nowrap;
-  transition: background-color 0.25s ease, transform 0.2s ease;
+  transition: background .25s, transform .2s;
 }
 
-.menu li a:hover {
-  background-color: rgba(31,47,70,0.12);
+.menu a:hover {
+  background: rgba(31,47,70,.12);
   transform: translateY(-1px);
 }
 
-/* UNDERLINE */
-.menu li a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 4px;
-  width: 0;
-  height: 2px;
-  background-color: #1f2f46;
-  transition: all 0.3s ease;
-}
-
-.menu li a:hover::after {
-  width: 70%;
-  left: 15%;
-}
-
-/* DROPDOWNS */
-.dropdown {
-  position: relative;
-}
+/* ================= DROPDOWNS ================= */
 
 .dropdown .arrow {
   margin-left: 5px;
   font-size: 12px;
-  display: inline-block;
-  transition: transform 0.3s ease;
+  transition: transform .3s;
 }
 
 .dropdown:hover .arrow,
@@ -191,141 +149,95 @@ nav {
   transform: rotate(90deg);
 }
 
-/* COURSES */
-.dropdown.courses-dropdown .dropdown-content {
+.dropdown-content {
   display: none;
   position: absolute;
   top: 110%;
-  left: 0;
-  background-color: #FEED95;
-  min-width: 260px;
-  max-width: 90vw;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: #FEED95;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.15);
+  z-index: 3000;
   list-style: none;
   padding: 0;
 }
 
-.dropdown.courses-dropdown:hover .dropdown-content,
-.dropdown.courses-dropdown.open .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown.open .dropdown-content {
   display: block;
 }
 
-/* NOTES */
-.dropdown.notes-dropdown .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 110%;
-  right: 0;
-  background-color: #FEED95;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  list-style: none;
-}
+/* ================= NEWS ================= */
 
-.dropdown.notes-dropdown:hover .dropdown-content,
-.dropdown.notes-dropdown.open .dropdown-content {
-  display: block;
-}
-
-/* ANNOUNCEMENTS */
 .news-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  flex: 1;
 }
 
 #news-list {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   max-height: 180px;
   overflow-y: auto;
-  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #d4b200 #FEED95;
 }
 
-#news-list li {
-  padding: 6px 20px 6px 6px;
-  word-wrap: break-word;
-  white-space: normal;
+#news-list::-webkit-scrollbar {
+  width: 8px;
 }
 
-.news-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  flex-wrap: wrap;
+#news-list::-webkit-scrollbar-thumb {
+  background: #d4b200;
+  border-radius: 10px;
 }
 
-.news-text {
-  margin-top: 5px;
-  line-height: 1.5;
-  word-break: break-word;
-}
+/* ================= ANIMATIONS ================= */
 
-/* ANIMATIONS */
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0%,50%,100% { opacity: 1 }
+  25%,75% { opacity: 0 }
 }
 
 @keyframes scroll-text {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+  from { transform: translateX(0) }
+  to { transform: translateX(-100%) }
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 footer {
-  background-color: #1f2f46;
+  background: #1f2f46;
   color: white;
   text-align: center;
   padding: 22px 0;
-  margin-top: 30px;
+  margin-top: auto;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
+
 @media (max-width: 1200px) {
-  .info-sections {
-    flex-direction: column;
-    gap: 40px;
-  }
+  .info-sections { flex-direction: column; gap: 40px; }
 }
 
 @media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-  }
-
-  .content {
-    padding: 20px;
-  }
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; }
 }
 
 @media (max-width: 768px) {
   h1 { font-size: 3rem; }
   #name { font-size: 2rem; }
-  #news-list { max-height: 120px; }
 }
 
-/* SAFARI FIX */
-@supports (-webkit-touch-callout: none) {
-  .container,
-  .content,
-  .info-sections,
-  #about,
-  #updated-news {
-    min-width: 0;
-    width: 100%;
-  }
+@media (hover: none) and (pointer: coarse) {
+  .dropdown:hover .dropdown-content { display: none; }
+}
 
-  #about,
-  #updated-news {
-    max-height: none;
-    height: auto;
-  }
+/* ================= SAFARI FIX ================= */
+
+@supports (-webkit-touch-callout: none) {
+  body { min-height: 100dvh; }
+  .content { min-width: 0; }
 }
