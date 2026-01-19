@@ -739,8 +739,8 @@ footer .footer-container a:hover::after {
   #news-list { max-height: 120px; }
 
   .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 }
 
@@ -782,7 +782,7 @@ footer .footer-container a:hover::after {
   .new-badge::before { font-size: 18px; }
 
   .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 }
@@ -1045,5 +1045,6 @@ footer .footer-container a:hover::after {
     margin-top: auto;
   }
 }
+
 
 
