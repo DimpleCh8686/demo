@@ -557,7 +557,7 @@ nav {
 
 .tutorial-list {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
   list-style: none;
   padding-left: 0 !important;
@@ -700,6 +700,16 @@ footer .footer-container a:hover::after {
     min-width: 0;
     max-width: 100%;
   }
+
+  .tutorial-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1199px) {
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
 }
 
 @media (max-width: 900px) {
@@ -723,6 +733,10 @@ footer .footer-container a:hover::after {
     align-self: stretch;
     height: fit-content;
   }
+
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -736,6 +750,10 @@ footer .footer-container a:hover::after {
 
   .news-container,
   #news-list { max-height: 120px; }
+
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }
 
 @media (max-width: 600px) {
@@ -758,6 +776,10 @@ footer .footer-container a:hover::after {
   footer .footer-container a { font-size: 1.375rem; }
 
   .construction-banner p { font-size: 10px; }
+
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }
 
 @media (max-width: 480px) {
@@ -774,6 +796,10 @@ footer .footer-container a:hover::after {
   .new-badge { font-size: 0.875rem; }
 
   .new-badge::before { font-size: 18px; }
+
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }
 
 /* TOUCH DEVICES */
@@ -954,6 +980,10 @@ footer .footer-container a:hover::after {
   .dropdown .dropdown-content li a:hover {
     background: rgba(31,47,70,0.12);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 }
 
