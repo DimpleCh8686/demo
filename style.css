@@ -702,8 +702,10 @@ footer .footer-container a:hover::after {
   }
 
   .tutorial-list {
-    grid-template-columns: repeat(6, 1fr);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
+
 }
 
 @media (max-width: 1199px) {
@@ -1064,3 +1066,4 @@ footer .footer-container a:hover::after {
     margin-top: auto;
   }
 }
+
