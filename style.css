@@ -569,9 +569,9 @@ nav {
 }
 
 .tutorial-list li {
-  background: #fffdf0;
+  background: #fffdf05d;
   border-radius: 14px;
-  padding: 18px 20px;
+  padding: 10px 10px;
   text-align: center;
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
@@ -1035,4 +1035,3 @@ footer .footer-container a:hover::after {
     margin-top: auto;
   }
 }
-
