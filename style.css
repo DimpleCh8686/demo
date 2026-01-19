@@ -737,6 +737,11 @@ footer .footer-container a:hover::after {
 
   .news-container,
   #news-list { max-height: 120px; }
+
+  .tutorial-list {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -775,6 +780,13 @@ footer .footer-container a:hover::after {
   .new-badge { font-size: 0.875rem; }
 
   .new-badge::before { font-size: 18px; }
+
+  @media (max-width: 480px) {
+  .tutorial-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
 }
 
 /* TOUCH DEVICES */
@@ -1035,3 +1047,4 @@ footer .footer-container a:hover::after {
     margin-top: auto;
   }
 }
+
