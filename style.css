@@ -35,7 +35,6 @@ body {
   flex: 1;
   padding: 40px;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
 }
@@ -556,15 +555,36 @@ nav {
   padding-left: 22px;
 }
 
+.tutorial-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  list-style: none;
+  padding-left: 0 !important;
+}
+
 .tutorial-list li {
-  margin-bottom: 10px;
-  font-size: 1.0625rem; 
+  margin-bottom: 0;
+  font-size: 1.0625rem;
+  padding: 15px;
+  background-color: #ffffff39;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .tutorial-list a {
   font-weight: bold;
   color: #1f2f46;
   text-decoration: none;
+  display: block;
+  word-break: break-word;
+}
+
+.tutorial-list a:hover {
+  color: #003366;
+  text-decoration: underline;
 }
 
 /* COURSE SUB-HEADINGS (h3) */
