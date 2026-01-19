@@ -701,17 +701,6 @@ footer .footer-container a:hover::after {
     max-width: 100%;
   }
 
-  .tutorial-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-
-}
-
-@media (max-width: 1199px) {
-  .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
 }
 
 @media (max-width: 900px) {
@@ -735,10 +724,6 @@ footer .footer-container a:hover::after {
     align-self: stretch;
     height: fit-content;
   }
-
-  .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
 }
 
 @media (max-width: 768px) {
@@ -753,9 +738,6 @@ footer .footer-container a:hover::after {
   .news-container,
   #news-list { max-height: 120px; }
 
-  .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
 }
 
 @media (max-width: 600px) {
@@ -779,9 +761,6 @@ footer .footer-container a:hover::after {
 
   .construction-banner p { font-size: 10px; }
 
-  .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
 }
 
 @media (max-width: 480px) {
@@ -799,9 +778,6 @@ footer .footer-container a:hover::after {
 
   .new-badge::before { font-size: 18px; }
 
-  .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
 }
 
 /* TOUCH DEVICES */
@@ -983,10 +959,6 @@ footer .footer-container a:hover::after {
     background: rgba(31,47,70,0.12);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
-
-  .tutorial-list {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
 }
 
 
@@ -1066,4 +1038,5 @@ footer .footer-container a:hover::after {
     margin-top: auto;
   }
 }
+
 
