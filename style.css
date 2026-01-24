@@ -65,7 +65,7 @@ h1 {
   display: flex;
   flex-direction: row;
   gap: 80px;
-  align-items: flex-start;
+  align-items: stretch; 
   width: 100%;
   box-sizing: border-box;
   overflow: visible;
@@ -201,7 +201,7 @@ nav {
 .dropdown.courses-dropdown .dropdown-content {
   display: none;
   position: absolute;
-  top: 110%;
+  top: 100%;
   left: 0;                  
   transform: none;
   background-color: #FEED95;
@@ -245,7 +245,7 @@ nav {
 .dropdown.notes-dropdown .dropdown-content {
   display: none;
   position: absolute;
-  top: 110%;
+  top: 100%;
   right: 0;
   left: auto;
   transform: none;
@@ -297,7 +297,7 @@ nav {
 .dropdown.notes-dropdown .arrow {
   margin-left: 5px;
   font-size: 12px;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   display: inline-block; 
   transform: rotate(0deg); 
 }
@@ -313,7 +313,7 @@ nav {
   margin-left: 5px;
   font-size: 12px;
   display: inline-block;   
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   transform: rotate(0deg); 
 }
 
@@ -559,7 +559,7 @@ nav {
 /* TUTORIAL GRID FIX */
 .tutorial-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
   list-style: none;
   padding: 0;
@@ -575,12 +575,6 @@ nav {
   text-align: center;
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
-
-
-/* .tutorial-list li {
-  margin-bottom: 10px;
-  font-size: 1.0625rem; 
-} */
 
 .tutorial-list a {
   font-weight: bold;
@@ -685,8 +679,12 @@ footer .footer-container a:hover::after {
     gap: 40px;
     width: 100%;
     box-sizing: border-box;
+    align-items: stretch; 
   }
 
+  .info-sections > * {
+    flex: 1;               
+  }
   #about {
     margin: 4px 0;
     padding-bottom: 20px;
@@ -713,9 +711,12 @@ footer .footer-container a:hover::after {
 
   .content { padding: 20px; }
 
-  .info-sections { gap: 30px; }
+  .info-sections { 
+    gap: 30px; }
 
-  #about h3 { margin: 4px 0; }
+  #about h3 { 
+    margin: 4px 0; 
+  }
 
   #about, #updated-news {
     flex: 1;
@@ -989,7 +990,7 @@ footer .footer-container a:hover::after {
 
   .container {
     display: flex;
-    flex-direction: row; /* Keeps sidebar and content side-by-side */
+    flex-direction: row; 
     flex: 1;
     min-height: 0;
     width: 100%;
@@ -998,7 +999,7 @@ footer .footer-container a:hover::after {
 
   .content {
     flex: 1;
-    min-width: 0; /* Critical for Safari text wrapping */
+    min-width: 0; 
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -1010,23 +1011,21 @@ footer .footer-container a:hover::after {
     display: flex;
     width: 100%;
     gap: 20px;
-    align-items: stretch; /* Forces both boxes to have the same height */
+    align-items: stretch; 
     box-sizing: border-box;
   }
 
-  /* Target both About and News boxes */
   #about,
   #updated-news {
-    flex: 1 1 0%; /* Forces equal width distribution */
-    min-width: 0; /* Allows text to wrap instead of overflowing */
-    height: auto; /* Removes the 300px limit that was cutting text */
-    max-height: none; /* Fixes the cutoff issue */
+    flex: 1 1 0%; 
+    min-width: 0; 
+    height: auto; 
+    max-height: none; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
   }
 
-  /* Fix for Announcement text wrapping */
   .news-text {
     width: 100%;
     white-space: normal;
@@ -1045,6 +1044,5 @@ footer .footer-container a:hover::after {
     margin-top: auto;
   }
 }
-
 
 
